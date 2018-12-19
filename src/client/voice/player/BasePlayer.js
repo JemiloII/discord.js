@@ -50,7 +50,7 @@ class BasePlayer extends EventEmitter {
     const args = isStream ? FFMPEG_ARGUMENTS.slice() : ['-i', input, ...FFMPEG_ARGUMENTS];
     if (options.seek) args.push('-ss', String(options.seek));
     
-    if (options.headers instanceof Object) {
+    if (options.headers && options.headers.contructor === Object) {
       const headers = options.headers.entries()
         .reduce((converted = '', current, index, src) => {
           const lineEndings = src.length === index + 1 ? '\r\n' : '';
